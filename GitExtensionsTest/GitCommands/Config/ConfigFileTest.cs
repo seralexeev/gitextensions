@@ -409,11 +409,13 @@ namespace GitExtensionsTest.Config
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
         public void TestWithNullSettings()
         {
-            ConfigFile file = new ConfigFile(GetConfigFileName(), true);
-            file.GetValue(null);
+	        Assert.Throws<ArgumentNullException>(() =>
+	        {
+		        ConfigFile file = new ConfigFile(GetConfigFileName(), true);
+		        file.GetValue(null);
+	        });
         }
 
         [TestMethod]

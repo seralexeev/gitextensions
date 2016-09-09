@@ -3573,8 +3573,7 @@ namespace GitUI.CommandsDialogs
 			    terminal.Start(startinfo);
 		    };
 	    }
-
-        public void ChangeTerminalActiveFolder(string path)
+		public void ChangeTerminalActiveFolder(string path)
         {
             if (terminal == null || terminal.RunningSession == null || string.IsNullOrWhiteSpace(path))
                 return;

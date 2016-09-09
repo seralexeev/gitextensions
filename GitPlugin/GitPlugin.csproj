@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -12,7 +12,7 @@
     <NoStandardLibraries>false</NoStandardLibraries>
     <AssemblyName>GitPlugin</AssemblyName>
     <RootNamespace>GitPlugin</RootNamespace>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>GitPluginKey.pfx</AssemblyOriginatorKeyFile>
     <FileUpgradeFlags>
@@ -47,6 +47,7 @@
     <IncrementalBuild>false</IncrementalBuild>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <DebugType>full</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,6 +59,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <IncrementalBuild>false</IncrementalBuild>
     <DebugType>pdbonly</DebugType>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Extensibility, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -232,12 +234,12 @@
   <Import Project="..\FxCop.targets" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <Target Name="AfterBuild">
-	<MakeDir Directories="$(TargetDir)en-US" />
-	<Message Text="Custom Step: Calling Resource Generator on $(ProjectDir)Properties\Resources.resx." />
-	<GenerateResource Sources="$(ProjectDir)Properties\Resources.resx" UseSourcePath="True" />
-	<Message Text="Custom Step: Calling AssemblyLinker to make an assembly at $(TargetDir)en-US\GitPlugin.resources.dll out of $(ProjectDir)Properties\Resources.resources." />
-	<AL EmbedResources="$(ProjectDir)Properties\Resources.resources" Culture="en-US" OutputAssembly="$(TargetDir)en-US\GitPlugin.resources.dll" />
-	<Message Text="Done with the Custom Step." />
+    <MakeDir Directories="$(TargetDir)en-US" />
+    <Message Text="Custom Step: Calling Resource Generator on $(ProjectDir)Properties\Resources.resx." />
+    <GenerateResource Sources="$(ProjectDir)Properties\Resources.resx" UseSourcePath="True" />
+    <Message Text="Custom Step: Calling AssemblyLinker to make an assembly at $(TargetDir)en-US\GitPlugin.resources.dll out of $(ProjectDir)Properties\Resources.resources." />
+    <AL EmbedResources="$(ProjectDir)Properties\Resources.resources" Culture="en-US" OutputAssembly="$(TargetDir)en-US\GitPlugin.resources.dll" />
+    <Message Text="Done with the Custom Step." />
   </Target>
   <ProjectExtensions>
     <VisualStudio>

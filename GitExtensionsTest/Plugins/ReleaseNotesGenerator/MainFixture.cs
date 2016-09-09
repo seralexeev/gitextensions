@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Threading;
+using NUnit.Framework;
 using ReleaseNotesGenerator;
 using FluentAssertions;
 
@@ -29,7 +30,7 @@ EndFragment:00000143
 </body></html>");
         }
 
-        [Test, RequiresSTA]
+        [Test, Apartment(ApartmentState.STA)]
         public void CopyToClipboard()
         {
             HtmlFragment.CopyToClipboard("<p>Hallo</p>");
